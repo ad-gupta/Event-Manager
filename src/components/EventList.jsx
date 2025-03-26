@@ -6,8 +6,8 @@ import { BsToggle2On } from "react-icons/bs";
 
 const EventList = ({ events, onDelete, onEdit, onRSVP }) => {
   return (
-    <div className="">
-      <table className="w-full text-left border border-black">
+    <div className="overflow-x-auto">
+      <table className="min-w-full text-left border border-black">
         <thead className="bg-gradient-to-r from-slate-950 to-slate-500 text-slate-100">
           <tr>
             <th className="border-b p-2">Name</th>
@@ -17,25 +17,25 @@ const EventList = ({ events, onDelete, onEdit, onRSVP }) => {
             <th className="border-b p-2">Actions</th>
           </tr>
         </thead>
-        <tbody className="">
+        <tbody>
           {events && events.length > 0 ? (
             events.map((event, ind) => (
-              <tr key={event.id} className={`${ind%2 ? 'bg-gradient-to-r from-slate-950 to-slate-500 text-slate-200': 'bg-neutral-100 text-slate-950'}`}>
+              <tr key={event.id} className={`${ind % 2 ? 'bg-gradient-to-r from-slate-950 to-slate-500 text-slate-200' : 'bg-neutral-100 text-slate-950'}`}>
                 <td className="border-b p-2">{event.name}</td>
                 <td className="border-b p-2">{event.date}</td>
                 <td className="border-b p-2">{event.location}</td>
                 <td className="border-b p-2">
                   <button
                     onClick={() => onRSVP(event.id)}
-                    className={`${event.rsvp ? `text-green-600` : `text-red-600`} text-2xl px-2 py-1 rounded`}
+                    className={`${event.rsvp ? 'text-green-600' : 'text-red-600'} text-2xl px-2 py-1 rounded`}
                   >
-                    {event.rsvp ? <BsToggle2On />: <BsToggle2Off />}
+                    {event.rsvp ? <BsToggle2On /> : <BsToggle2Off />}
                   </button>
                 </td>
                 <td className="border-b p-2 space-x-2">
                   <button
                     onClick={() => onEdit(event)}
-                    className="text-xl text"
+                    className="text-xl"
                   >
                     <CiEdit />
                   </button>
